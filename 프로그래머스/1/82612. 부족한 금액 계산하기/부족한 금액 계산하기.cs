@@ -4,12 +4,8 @@ class Solution
 {
     public long solution(int price, int money, int count)
     {
-        long remain = money;
+        long remain = money - (long)price * ((long)count * (1 + (long)count)) / 2;
 
-        for(int i = 1; i <= count; i++)
-        {
-            remain -= (long)price * (long)i;
-        }
         return (remain < 0) ? (remain * (-1)) : 0;
     }
 }
