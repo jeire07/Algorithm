@@ -2,24 +2,13 @@ using System;
 
 public class Solution {
     public int solution(string s) {
-        string key = "";
-        string number = "";
-        string[] words = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+        string[] num = new string[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
-        for (int i = 0; i < s.Length; i++)
-        {
-            key += s[i];
-            if(int.TryParse(key, out int result))
-            {
-                number += result.ToString();
-                key = "";
-            }
-            else if (Array.IndexOf(words, key) >= 0)
-            {
-                number += Array.IndexOf(words, key).ToString();
-                key = "";
-            }
+        for(int i = 0; i < 10; i++)
+        {        
+            s = s.Replace(num[i], i.ToString());
         }
-        return int.Parse(number);
+
+        return Int32.Parse(s);
     }
 }
