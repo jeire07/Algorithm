@@ -23,7 +23,6 @@ public class Solution {
         // 리스트 정렬
         sums.Sort();
 
-        int[] answer = sums.ToArray();
-        return answer;
+        return sums.ToArray();
     }
 }
