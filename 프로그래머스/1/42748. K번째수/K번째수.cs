@@ -10,7 +10,7 @@ public class Solution {
         {
             Array.Copy(array, tempArray, array.Length);
             Array.Sort(tempArray, commands[i, 0] - 1, commands[i, 1] - commands[i, 0] + 1);
-            tempArray = tempArray;
+            
             int index = commands[i, 0] + commands[i, 2] - 2;
             answer[i] = tempArray[index];
         }
