@@ -1,39 +1,36 @@
 using System;
+using System.Linq;
+using System.Text;
 
-public class Solution {
-    public string solution(string X, string Y) {
-        string answer = "";
+public class Solution
+{
+	public string solution(string X, string Y)
+	{
+		StringBuilder sb = new StringBuilder();
 
-        // 중복되는 수 전부 추출
-        for (int i = 0; i < X.Length; i++)
-        {
-            char digit = X[i];
+		int[] xDigits = new int[10];
+		int[] yDigits = new int[10];
 
-            if (Y.IndexOf(digit) != -1)
-            {
-                answer += digit;
+		foreach(char c in X)
+            xDigits[c - '0']++;
+			
+		foreach(char c in Y)
+            yDigits[c - '0']++;
+        
+		for (int i = 9; i >= 0; i--)
+		{
+			int count = xDigits[i] < yDigits[i] ? xDigits[i] : yDigits[i];
 
-                Y = Y.Remove(Y.IndexOf(digit), 1);
-            }
-        }
+			for (int j = 0; j < count; j++)
+                sb.Append(i);
+		}
 
-        if (answer == "")
-        {
-            return "-1";
-        }
-        else
-        {
-            // 최고로 큰 수 생성
-            char[] digitArray = answer.ToCharArray();
-            Array.Sort(digitArray);
-            Array.Reverse(digitArray);
+		if (sb.Length == 0)
+			return "-1";
 
-            // 0으로만 구성된 문자열이면 0 1개가 되어야 하므로 정수로 바꿨다가 다시 바꾼다.
-            int digits = int.Parse(answer);
-            answer = digits.ToString();
+		if (sb.ToString().ToCharArray().Where<Char>(x => x == '0').Count() == sb.Length)
+			return "0";
 
-            answer = new string(digitArray);
-            return answer;
-        }
-    }
+		return sb.ToString();
+	}
 }
