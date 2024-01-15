@@ -35,7 +35,7 @@ public class Solution
         return answer;
     }
 
-    private Pos FindChar(string[] maps, Char findChar)
+    public Pos FindChar(string[] maps, Char findChar)
     {
         Pos pos = new Pos(0, 0, 0);
 
@@ -48,8 +48,8 @@ public class Solution
         return pos;
     }
 
-
-    private int BFS(string[] maps, Pos startPos, Char findChar)
+    
+    public int BFS(string[] maps, Pos startPos, Char findChar)
     {
         bool[,] boolArrays = new bool[maps.Length, maps[0].Length];
         int[] dirY = new int[4] { 1, -1, 0, 0 };
